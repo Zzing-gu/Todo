@@ -55,9 +55,10 @@ class App extends Component {
 
       <React.Fragment>
         <TopBar modal={this.openModal} />
-        <Grid className={this.props.classes.root} container direction='row' alignment='center'
+        <Grid className={this.props.classes.root} container direction='row' alignItems="center"
           justify="center"
-          style={{ minHeight: '100vh' }}>
+          style={{height:'100vh'}}
+          >
 
           {this.state.todos.map(item => (
             <Grid key={item.id} item xs={12} sm={6} md={3}>
