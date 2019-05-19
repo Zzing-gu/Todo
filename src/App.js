@@ -65,8 +65,8 @@ class App extends Component {
               <Paper className={this.props.classes.paper}>
 
                 <div >
-                  <h1>{item.title}</h1>
-                  <span>{item.description}</span>
+                  <h1 >{item.title}</h1>
+                  <span >{item.description}</span>
                 </div>
               </Paper>
             </Grid>

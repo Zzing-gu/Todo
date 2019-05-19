@@ -10,8 +10,8 @@ function rand() {
 }
 
 function getModalStyle() {
-  const top = 50 ;
-  const left = 50 ;
+  const top = 50;
+  const left = 50;
 
   return {
     top: `${top}%`,
@@ -35,6 +35,8 @@ class SimpleModal extends React.Component {
   state = {
     open: false,
   };
+  title = React.createRef();
+  content = React.createRef();
 
   handleOpen = () => {
     this.setState({ open: true });
@@ -44,13 +46,17 @@ class SimpleModal extends React.Component {
     this.setState({ open: false });
   };
 
+  addTodo = () => {
+    console.log('add todo')
+    console.log(this.title.current.value)
+    console.log(this.content.current.value)
+  }
+
   render() {
     const { classes } = this.props;
 
     return (
       <div>
-        <Typography gutterBottom>Click to get the full Modal experience!</Typography>
-        <Button onClick={this.handleOpen}>Open Modal</Button>
         <Modal
           aria-labelledby="simple-modal-title"
           aria-describedby="simple-modal-description"
@@ -58,13 +64,14 @@ class SimpleModal extends React.Component {
           onClose={this.handleClose}
         >
           <div style={getModalStyle()} className={classes.paper}>
-            <Typography variant="h6" id="modal-title">
-              Text in a modal
-            </Typography>
-            <Typography variant="subtitle1" id="simple-modal-description">
-              Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-            </Typography>
-            <SimpleModalWrapped />
+            <h3>Title</h3>
+            <input ref={this.title} type="text" />
+            <h3>Content</h3>
+            <input ref={this.content} type="text" />
+            <div>
+
+              <Button onClick={this.addTodo} >Send</Button>
+            </div>
           </div>
         </Modal>
       </div>
