@@ -4,6 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Modal from '@material-ui/core/Modal';
 import Button from '@material-ui/core/Button';
+import axios from 'axios'
 
 function rand() {
   return Math.round(Math.random() * 20) - 10;
@@ -46,10 +47,26 @@ class SimpleModal extends React.Component {
     this.setState({ open: false });
   };
 
-  addTodo = () => {
+  addTodo = async () => {
     console.log('add todo')
     console.log(this.title.current.value)
     console.log(this.content.current.value)
+
+    // await fetch('http://127.0.0.1:8000/api/create/',{
+    //   method: 'POST',
+    //   body:{title: this.title.current.value, description: this.content.current.value},
+    //   headers: new Headers(), // 이 부분은 따로 설정하고싶은 header가 있다면 넣으세요
+    // })
+    var data =  { title: this.title.current.value, description: this.content.current.value }
+    //axios.post('http://127.0.0.1:8000/api/create/')
+    var options = {
+      method: 'POST',
+      accept: 'application/json',
+      headers: { 'content-type': ' application/json;charset=UTF-8' },
+      data: data,
+      url:'http://127.0.0.1:8000/api/create/',
+    }
+    axios(options)
   }
 
   render() {

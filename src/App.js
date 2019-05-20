@@ -61,7 +61,9 @@ class App extends Component {
           >
 
           {this.state.todos.map(item => (
-            <Grid key={item.id} item xs={12} sm={6} md={3}>
+            <Grid key={item.id} item xs={12} sm={6} md={3} justify="center">
+              <Grid container justify='center'>
+
               <Paper className={this.props.classes.paper}>
 
                 <div >
@@ -69,6 +71,7 @@ class App extends Component {
                   <span >{item.description}</span>
                 </div>
               </Paper>
+              </Grid>
             </Grid>
           ))}
         </Grid>
